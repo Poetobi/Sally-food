@@ -1,20 +1,65 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+import Home from './screens/Home';
+import Login from './screens/Login';
+import Welcome from './screens/Welcome';
+import Signup from './screens/Signup';
+import Otp from './screens/Otp';
+import User from './screens/User';
+import Cart from './screens/Cart';
+
+
+const Stack = createNativeStackNavigator();
+
+const MyStack = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: 'white'
+          }
+        }}
+      >
+        <Stack.Screen 
+          name="Home" 
+          component={Home} 
+        />
+              <Stack.Screen 
+          name="Login" 
+          component={Login} 
+        />
+         <Stack.Screen 
+          name="Welcome" 
+          component={Welcome} 
+        />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+           <Stack.Screen 
+          name="Signup" 
+          component={Signup} 
+        />
+
+
+<Stack.Screen 
+          name="User" 
+          component={User} 
+        />
+
+<Stack.Screen 
+          name="Cart" 
+          component={Cart} 
+        />
+
+
+<Stack.Screen 
+          name="Otp" 
+          component={Otp} 
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default MyStack;
